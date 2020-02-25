@@ -11,18 +11,18 @@ TianKairui
 #### 爬取数据
 F12键查看所需网页的审查元素。
 天天基金的所有基金数据储存在一个div里，使用BeautifulSoup的find_all方法，
-通过class获取div。
+通过class获取div。  
 `exts = bf.find_all('div', class_='dataOfFund')`
-再使用同样的方法，获取包含最终所需数据的两个span。
+再使用同样的方法，获取包含最终所需数据的两个span。  
 `span = dd[0].find_all('span')`
-将两个span中的数据拼接成想要的格式。
+将两个span中的数据拼接成想要的格式。  
 `fundData = span[0].text + '(' + span[1].text + ')'`
 
 #### 获取日期
-获取系统日期。
+获取系统日期。  
 `todayTime = time.strftime("%Y-%m-%d", time.localtime())`
 这行代码还可以获取当前时间，但是这次我并不需要。
-Excel把文件中的第一列写入了每天的日期，读取这一信息
+Excel把文件中的第一列写入了每天的日期，读取这一信息。  
 `str(ws.cell(row, 1).value)[0:10]`
 使用str()将数据转换为str格式，后边的切片是为了去掉日期后自动添加的时间。
 将系统日期与Excel的日期注意比较，好确定将数据填入哪一行。
